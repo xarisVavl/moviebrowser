@@ -3,16 +3,18 @@ import { Link,   useNavigate} from "react-router-dom";
 
 
 const Navbar = ({searchText,setSearchText}) => {
+  const [input,setInput] = useState('');
   const navigate= useNavigate();
-  const updateSearchText = (e) => {
-    navigate('/search');
-    
 
-    }
+    
+ 
+
+    
     const handleSubmit = (e) => {
       e.preventDefault();
-      updateSearchText();
-      setSearchText('');
+   navigate('/search');
+      setSearchText(input);
+      setInput('');
     }
   return ( 
 <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,7 +35,7 @@ const Navbar = ({searchText,setSearchText}) => {
        
       </ul>
       <form className="d-flex" role="search" onSubmit={handleSubmit}>
-        <input className="form-control me-2" value={searchText} onChange={(e)=>setSearchText(e.target.value)} type="search" placeholder="Search" aria-label="Search"/>
+        <input className="form-control me-2" value={input} onChange={(e)=>setInput(e.target.value)} type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit" >Search</button>
       </form>
     </div>
